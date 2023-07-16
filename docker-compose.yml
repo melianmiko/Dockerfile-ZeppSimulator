@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  simulator:
+    image: zeppos-simulator
+    build: .
+    network_mode: host
+    environment:
+      - DISPLAY
+    volumes:
+      - ./home:/home/simulator
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    devices:
+      - /dev/net/tun
+    cap_add:
+      - CAP_SYS_ADMIN
+      - CAP_NET_ADMIN
